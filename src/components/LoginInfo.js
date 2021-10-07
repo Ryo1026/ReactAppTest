@@ -11,7 +11,7 @@ class LoginInfo extends React.Component {
     if (isLogin) {
       return <h1>您好,{content}</h1>;
     } else {
-      return <h1>請登入</h1>;
+      return <h1>請先登入</h1>;
     }
   }
 }
