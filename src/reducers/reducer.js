@@ -10,8 +10,12 @@ const myReducer = (state = initStore, action) => {
     case "LOGIN":
       return {
         ...state,
-        content: action.content,
         loginStatus: true,
+      };
+    case "INPUT":
+      return {
+        ...state,
+        content: action.content,
       };
     default:
       return state;

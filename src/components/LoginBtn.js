@@ -1,21 +1,45 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setLogin } from "../actions/action";
+
+const mapStateToProps = (state) => {
+  return {
+    loginStatus: state.loginStatus,
+    content: state.content,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onBtnClick: () => {
+      dispatch(setLogin());
+    },
+  };
+};
 
 class LoginBtn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    // this.setLogin = props.setLogin;
   }
 
   componentDidMount() {}
 
   render() {
-    const { isLogin, content } = this.props;
-    if (isLogin) {
+    const { loginStatus, content, onBtnClick } = this.props;
+    if (loginStatus) {
       return <button disabled>登入</button>;
     } else {
-      if (content) {
-        return <button onClick={this.props.setLogin}>登入</button>;
+      if (content.trim()) {
+        return (
+          <button
+            onClick={() => {
+              onBtnClick();
+            }}
+          >
+            登入
+          </button>
+        );
       } else {
         return <button disabled>登入</button>;
       }
@@ -23,4 +47,5 @@ class LoginBtn extends React.Component {
   }
 }
 
-export default LoginBtn;
+const connectLoginBtn = connect(mapStateToProps, mapDispatchToProps)(LoginBtn);
+export default connectLoginBtn;

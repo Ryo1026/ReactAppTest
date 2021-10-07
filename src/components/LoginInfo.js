@@ -1,4 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => {
+  return {
+    loginStatus: state.loginStatus,
+    content: state.content,
+  };
+};
 
 class LoginInfo extends React.Component {
   constructor(props) {
@@ -7,8 +15,8 @@ class LoginInfo extends React.Component {
   }
 
   render() {
-    const { isLogin, content } = this.props;
-    if (isLogin) {
+    const { loginStatus, content } = this.props;
+    if (loginStatus) {
       return <h1>您好,{content}</h1>;
     } else {
       return <h1>請先登入</h1>;
@@ -16,4 +24,5 @@ class LoginInfo extends React.Component {
   }
 }
 
-export default LoginInfo;
+const connectLoginInfo = connect(mapStateToProps)(LoginInfo);
+export default connectLoginInfo;

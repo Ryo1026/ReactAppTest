@@ -1,5 +1,9 @@
 //  action creator
 
-export function setLogin(content) {
-  return { type: "LOGIN", content };
+export function setLogin() {
+  return { type: "LOGIN" };
+}
+
+export function setInput(content) {
+  return { type: "INPUT", content };
 }
