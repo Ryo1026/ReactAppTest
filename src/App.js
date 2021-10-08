@@ -3,6 +3,7 @@ import "./App.css";
 import MyComponent from "./MyComponent";
 
 function App() {
+  // 函式型的解構寫在return前
   return (
     <div className="App">
       <header className="App-header">

@@ -5,6 +5,7 @@ import LoginBtn from "./components/LoginBtn";
 
 class MyComponent extends React.Component {
   render() {
+    // 類別型元件解構寫在這
     return (
       <>
         <LoginInfo />

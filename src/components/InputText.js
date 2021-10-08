@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { setInput } from "../actions/action";
 
+// 該 component 需要存取的 store部分(state 與 dispatch)
 const mapStateToProps = (state) => {
   return {
     loginStatus: state.loginStatus,
@@ -16,6 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+// UI component
 class InputText extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +28,7 @@ class InputText extends React.Component {
     this.textInput.current.focus();
   }
   render() {
+    // connect 後 Redux store 會變成 props 這邊用解構來取得
     const { loginStatus, onInputChange } = this.props;
     if (loginStatus) {
       return <></>;
@@ -33,6 +36,7 @@ class InputText extends React.Component {
       return (
         <div>
           <input
+            placeholder="請輸入姓名"
             ref={this.textInput}
             onChange={() => onInputChange(this.textInput.current.value)}
           />
@@ -42,6 +46,7 @@ class InputText extends React.Component {
   }
 }
 
+// 資料層沒有獨立出來，與UI層做一起
 const connectInputText = connect(
   mapStateToProps,
   mapDispatchToProps

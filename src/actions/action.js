@@ -1,4 +1,5 @@
 //  action creator
+//  產生 action obj
 
 export function setLogin() {
   return { type: "LOGIN" };
